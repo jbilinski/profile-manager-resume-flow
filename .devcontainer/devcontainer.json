@@ -26,7 +26,8 @@
       "onAutoForward": "openPreview"
     }
   },
-  "workspaceMount": "source=/data/resume-system/resume-flow,target=/workspace,type=bind,consistency=cached",
+  "workspaceMount": "source=resume-flow-workspace,target=/workspace,type=volume",
+  // "workspaceMount": "source=/data/resume-system/resume-flow,target=/workspace,type=bind,consistency=cached",
   "workspaceFolder": "/workspace",
   "forwardPorts": [
     8501

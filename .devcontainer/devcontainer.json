@@ -1,7 +1,8 @@
 {
   "name": "Resume Flow",
-  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye",
+  "dockerComposeFile": "compose.yaml",
+  "service": "resume-flow",
+  "workspaceFolder": "/workspace",
   "customizations": {
     "codespaces": {
       "openFiles": [
@@ -16,19 +17,12 @@
       ]
     }
   },
-  "updateContentCommand": "[ -f packages.txt ] && sudo apt update && sudo apt upgrade -y && sudo xargs apt install -y <packages.txt; [ -f requirements.txt ] && pip3 install --user -r requirements.txt; pip3 install --user streamlit; echo '✅ Packages installed and Requirements met'",
-  "postAttachCommand": {
-    "server": "streamlit run web_app.py --server.enableCORS false --server.enableXsrfProtection false"
-  },
   "portsAttributes": {
     "8501": {
       "label": "Application",
       "onAutoForward": "openPreview"
     }
   },
-  "workspaceMount": "source=resume-flow-workspace,target=/workspace,type=volume",
-  // "workspaceMount": "source=/data/resume-system/resume-flow,target=/workspace,type=bind,consistency=cached",
-  "workspaceFolder": "/workspace",
   "forwardPorts": [
     8501
   ]

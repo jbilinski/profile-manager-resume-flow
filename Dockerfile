@@ -4,6 +4,9 @@ FROM python:3.12-slim
 # Set the working directory inside the container
 WORKDIR /app
 
+# Set the DEBIAN_FRONTEND to noninteractive to prevent debconf warnings
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Install system dependencies for LaTeX to PDF conversion
 RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-latex-base \

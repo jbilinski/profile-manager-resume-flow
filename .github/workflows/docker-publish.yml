@@ -89,3 +89,11 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
+
+      - name: Notify on success
+        if: success()
+        run: echo "Build and push succeeded!"
+
+      - name: Notify on failure
+        if: failure()
+        run: echo "Build and push failed!"
